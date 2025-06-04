@@ -1,0 +1,218 @@
+[
+  {
+    "id": "eco1001",
+    "name": "Bamboo Toothbrush",
+    "brand": "EcoSmile",
+    "description": "Biodegradable bamboo toothbrush with plant-based bristles",
+    "imageUrl": "https://images.pexels.com/photos/3737576/pexels-photo-3737576.jpeg",
+    "price": "$4.99",
+    "ecoScore": 9.5,
+    "ecoFeatures": [
+      "Biodegradable handle", 
+      "Plant-based bristles",
+      "Plastic-free packaging",
+      "Sustainably harvested bamboo"
+    ],
+    "replaces": ["Toothbrush", "Oral Care", "Bathroom", "Personal Care"],
+    "keywords": ["toothbrush", "brush", "dental", "oral"],
+    "purchaseUrl": "https://example.com/eco-toothbrush"
+  },
+  {
+    "id": "eco1002",
+    "name": "Reusable Produce Bags",
+    "brand": "GreenMarket",
+    "description": "Set of 5 washable mesh produce bags for grocery shopping",
+    "imageUrl": "https://images.pexels.com/photos/4495705/pexels-photo-4495705.jpeg",
+    "price": "$12.99",
+    "ecoScore": 9.2,
+    "ecoFeatures": [
+      "Machine washable",
+      "Organic cotton mesh",
+      "Replaces single-use plastic bags",
+      "Durable design for years of use"
+    ],
+    "replaces": ["Plastic Bags", "Produce Bags", "Grocery", "Kitchen"],
+    "keywords": ["bag", "produce", "grocery", "shopping"],
+    "purchaseUrl": "https://example.com/eco-produce-bags"
+  },
+  {
+    "id": "eco1003",
+    "name": "Stainless Steel Water Bottle",
+    "brand": "EverFlow",
+    "description": "Insulated stainless steel water bottle, keeps drinks cold for 24 hours",
+    "imageUrl": "https://images.pexels.com/photos/1188649/pexels-photo-1188649.jpeg",
+    "price": "$24.95",
+    "ecoScore": 8.9,
+    "ecoFeatures": [
+      "BPA-free",
+      "Reusable for years",
+      "Recyclable at end of life",
+      "Reduces plastic bottle waste"
+    ],
+    "replaces": ["Water Bottle", "Plastic Bottle", "Drinks", "Hydration"],
+    "keywords": ["bottle", "water", "drink", "hydration"],
+    "purchaseUrl": "https://example.com/eco-water-bottle"
+  },
+  {
+    "id": "eco1004",
+    "name": "Beeswax Food Wraps",
+    "brand": "HoneyWrap",
+    "description": "Reusable beeswax wraps for food storage, replaces plastic wrap",
+    "imageUrl": "https://images.pexels.com/photos/6542200/pexels-photo-6542200.jpeg",
+    "price": "$18.50",
+    "ecoScore": 9.4,
+    "ecoFeatures": [
+      "Biodegradable",
+      "Reusable for up to a year",
+      "Made with organic cotton",
+      "Natural antibacterial properties"
+    ],
+    "replaces": ["Plastic Wrap", "Food Storage", "Kitchen", "Food Preservation"],
+    "keywords": ["wrap", "food", "storage", "kitchen"],
+    "purchaseUrl": "https://example.com/eco-beeswax-wraps"
+  },
+  {
+    "id": "eco1005",
+    "name": "Recycled Paper Notebooks",
+    "brand": "GreenScript",
+    "description": "Set of 3 notebooks made from 100% post-consumer recycled paper",
+    "imageUrl": "https://images.pexels.com/photos/733857/pexels-photo-733857.jpeg",
+    "price": "$14.99",
+    "ecoScore": 8.7,
+    "ecoFeatures": [
+      "100% recycled paper",
+      "Plant-based inks",
+      "Plastic-free binding",
+      "Tree-free production"
+    ],
+    "replaces": ["Notebook", "Stationery", "Office Supplies", "Paper Products"],
+    "keywords": ["notebook", "paper", "stationery", "journal", "writing"],
+    "purchaseUrl": "https://example.com/eco-notebooks"
+  },
+  {
+    "id": "eco1006",
+    "name": "Organic Cotton T-Shirt",
+    "brand": "EarthThreads",
+    "description": "Classic t-shirt made from 100% organic cotton, ethically produced",
+    "imageUrl": "https://images.pexels.com/photos/6311387/pexels-photo-6311387.jpeg",
+    "price": "$29.99",
+    "ecoScore": 8.8,
+    "ecoFeatures": [
+      "Organic cotton",
+      "No toxic dyes",
+      "Fair trade certified",
+      "Biodegradable materials"
+    ],
+    "replaces": ["T-Shirt", "Clothing", "Apparel", "Fashion"],
+    "keywords": ["shirt", "tshirt", "clothing", "top", "apparel"],
+    "purchaseUrl": "https://example.com/eco-tshirt"
+  },
+  {
+    "id": "eco1007",
+    "name": "Bamboo Toilet Paper",
+    "brand": "ForestFree",
+    "description": "Soft toilet paper made from bamboo, plastic-free packaging",
+    "imageUrl": "https://images.pexels.com/photos/6045078/pexels-photo-6045078.jpeg",
+    "price": "$34.99 (24 rolls)",
+    "ecoScore": 9.3,
+    "ecoFeatures": [
+      "Tree-free production",
+      "Rapidly renewable bamboo",
+      "Plastic-free packaging",
+      "Biodegradable"
+    ],
+    "replaces": ["Toilet Paper", "Bathroom", "Tissue", "Paper Products"],
+    "keywords": ["toilet", "paper", "bathroom", "tissue"],
+    "purchaseUrl": "https://example.com/eco-toilet-paper"
+  },
+  {
+    "id": "eco1008",
+    "name": "Refillable Cleaning Spray",
+    "brand": "CleanGreen",
+    "description": "Glass spray bottle with refillable cleaning tablets, just add water",
+    "imageUrl": "https://images.pexels.com/photos/4108715/pexels-photo-4108715.jpeg",
+    "price": "$19.99",
+    "ecoScore": 9.6,
+    "ecoFeatures": [
+      "Reusable glass bottle",
+      "Plant-based cleaning ingredients",
+      "Reduces plastic waste",
+      "Non-toxic formula"
+    ],
+    "replaces": ["Cleaning Spray", "Household Cleaner", "Cleaning Products", "Home Care"],
+    "keywords": ["cleaner", "spray", "cleaning", "household"],
+    "purchaseUrl": "https://example.com/eco-cleaning-spray"
+  },
+  {
+    "id": "eco1009",
+    "name": "Biodegradable Phone Case",
+    "brand": "EcoCase",
+    "description": "Phone case made from compostable plant-based materials",
+    "imageUrl": "https://images.pexels.com/photos/2682851/pexels-photo-2682851.jpeg",
+    "price": "$29.95",
+    "ecoScore": 8.5,
+    "ecoFeatures": [
+      "Compostable materials",
+      "Plastic-free",
+      "Sustainable production",
+      "Biodegrades in 6-12 months"
+    ],
+    "replaces": ["Phone Case", "Electronics Accessories", "Mobile Accessories", "Tech"],
+    "keywords": ["phone", "case", "cover", "mobile", "cell"],
+    "purchaseUrl": "https://example.com/eco-phone-case"
+  },
+  {
+    "id": "eco1010",
+    "name": "Reusable Coffee Cup",
+    "brand": "BrewEco",
+    "description": "Insulated bamboo coffee cup with silicone lid and sleeve",
+    "imageUrl": "https://images.pexels.com/photos/1415743/pexels-photo-1415743.jpeg",
+    "price": "$18.95",
+    "ecoScore": 9.0,
+    "ecoFeatures": [
+      "Bamboo and rice husk materials",
+      "Reusable design",
+      "Dishwasher safe",
+      "Reduces single-use cup waste"
+    ],
+    "replaces": ["Coffee Cup", "Travel Mug", "Drinkware", "Coffee Accessories"],
+    "keywords": ["coffee", "cup", "mug", "travel", "drink"],
+    "purchaseUrl": "https://example.com/eco-coffee-cup"
+  },
+  {
+    "id": "eco1011",
+    "name": "Solid Dish Soap Bar",
+    "brand": "SudsUp",
+    "description": "Zero-waste solid dish soap bar that lasts longer than liquid soap",
+    "imageUrl": "https://images.pexels.com/photos/6937505/pexels-photo-6937505.jpeg",
+    "price": "$9.99",
+    "ecoScore": 9.7,
+    "ecoFeatures": [
+      "Plastic-free packaging",
+      "Plant-based ingredients",
+      "Biodegradable formula",
+      "Palm oil free"
+    ],
+    "replaces": ["Dish Soap", "Dishwashing Liquid", "Kitchen Cleaner", "Cleaning Products"],
+    "keywords": ["dish", "soap", "dishwashing", "kitchen", "cleaning"],
+    "purchaseUrl": "https://example.com/eco-dish-soap"
+  },
+  {
+    "id": "eco1012",
+    "name": "Natural Deodorant",
+    "brand": "PureScent",
+    "description": "Aluminum-free natural deodorant in compostable cardboard tube",
+    "imageUrl": "https://images.pexels.com/photos/6621462/pexels-photo-6621462.jpeg",
+    "price": "$12.95",
+    "ecoScore": 9.1,
+    "ecoFeatures": [
+      "Zero-waste packaging",
+      "Vegan ingredients",
+      "No synthetic fragrances",
+      "Cruelty-free"
+    ],
+    "replaces": ["Deodorant", "Personal Care", "Body Care", "Hygiene Products"],
+    "keywords": ["deodorant", "personal", "care", "hygiene", "body"],
+    "purchaseUrl": "https://example.com/eco-deodorant"
+  }
+]

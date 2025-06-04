@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoSwap - Eco-Friendly Alternatives</title>
+  <link rel="stylesheet" href="popup.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <div class="logo-icon">
+          <!-- <img src="icons/icon48.png" alt="EcoSwap Logo"> -->
+        </div>
+        <h1>EcoSwap</h1>
+      </div>
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="alternatives">Alternatives</button>
+        <button class="tab-btn" data-tab="saved">Saved</button>
+        <button class="tab-btn" data-tab="info">Info</button>
+      </div>
+    </header>
+    
+    <main>
+      <!-- Current Product Section -->
+      <section id="current-product" class="current-product">
+        <h2>Current Product</h2>
+        <div class="product-info">
+          <div class="product-image">
+            <img src="https://via.placeholder.com/100" alt="Product Image" id="current-product-image">
+          </div>
+          <div class="product-details">
+            <h3 id="current-product-title">Loading product...</h3>
+            <p id="current-product-price">$0.00</p>
+            <p id="current-product-category">Category: Unknown</p>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Tab Content -->
+      <div class="tab-content">
+        <!-- Alternatives Tab -->
+        <div id="alternatives-tab" class="tab-pane active">
+          <div class="filters">
+            <div class="filter-group">
+              <label for="category-filter">Category:</label>
+              <select id="category-filter">
+                <option value="all">All Categories</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="sort-by">Sort By:</label>
+              <select id="sort-by">
+                <option value="eco-score">Eco Score</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="alternatives-list" id="alternatives-list">
+            <!-- Loading State -->
+            <div class="loading-state">
+              <div class="spinner"></div>
+              <p>Finding eco-friendly alternatives...</p>
+            </div>
+            
+            <!-- Alternatives will be inserted here by JavaScript -->
+          </div>
+        </div>
+        
+        <!-- Saved Tab -->
+        <div id="saved-tab" class="tab-pane">
+          <div class="saved-list" id="saved-list">
+            <p class="empty-state">You haven't saved any alternatives yet.</p>
+            <!-- Saved alternatives will be inserted here by JavaScript -->
+          </div>
+        </div>
+        
+        <!-- Info Tab -->
+        <div id="info-tab" class="tab-pane">
+          <div class="info-content">
+            <h3>About EcoSwap</h3>
+            <p>EcoSwap helps you find eco-friendly alternatives to everyday products while shopping online.</p>
+            
+            <h3>How It Works</h3>
+            <p>When you browse products on supported websites, EcoSwap automatically detects the product and suggests sustainable alternatives.</p>
+            
+            <h3>Our Eco Score</h3>
+            <div class="eco-score-legend">
+              <div class="score-item">
+                <span class="score-badge high">9-10</span>
+                <span>Excellent environmental impact</span>
+              </div>
+              <div class="score-item">
+                <span class="score-badge medium">7-8</span>
+                <span>Good environmental impact</span>
+              </div>
+              <div class="score-item">
+                <span class="score-badge low">5-6</span>
+                <span>Average environmental impact</span>
+              </div>
+              <div class="score-item">
+                <span class="score-badge very-low">&lt;5</span>
+                <span>Poor environmental impact</span>
+              </div>
+            </div>
+            
+            <h3>Supported Websites</h3>
+            <ul class="supported-sites">
+              <li>Amazon</li>
+              <li>Walmart</li>
+              <li>Target</li>
+              <li>eBay</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+    
+    <footer>
+      <p>© 2025 EcoSwap - Making sustainable choices easier</p>
+    </footer>
+  </div>
+  
+  <!-- Alternative Template (Hidden) -->
+  <template id="alternative-template">
+    <div class="alternative-item">
+      <div class="alternative-image">
+        <img src="" alt="Alternative Product">
+        <span class="eco-score">0.0</span>
+      </div>
+      <div class="alternative-info">
+        <h3 class="alternative-name"></h3>
+        <p class="alternative-brand"></p>
+        <p class="alternative-price"></p>
+        <p class="alternative-description"></p>
+        <div class="alternative-features">
+          <!-- Features will be added here -->
+        </div>
+        <div class="alternative-actions">
+          <button class="btn-save">Save</button>
+          <a href="#" class="btn-buy" target="_blank">Buy Now</a>
+        </div>
+      </div>
+    </div>
+  </template>
+  
+  <script src="popup.js" type="module"></script>
+</body>
+</html>

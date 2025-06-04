@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "EcoSwap - Eco-Friendly Product Alternatives",
+  "version": "1.0.0",
+  "description": "Discover eco-friendly alternatives to products while shopping online",
+  
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "EcoSwap"
+  },
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "*://*.amazon.com/*",
+    "*://*.walmart.com/*",
+    "*://*.target.com/*",
+    "*://*.ebay.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.amazon.com/*",
+        "*://*.walmart.com/*",
+        "*://*.target.com/*",
+        "*://*.ebay.com/*"
+      ],
+      "js": ["contentScript.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
