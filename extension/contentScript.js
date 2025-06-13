@@ -184,8 +184,8 @@ const showNotification = (count) => {
   const notification = document.createElement('div');
   notification.className = 'ecoswap-notification';
   notification.innerHTML = `
-    <div class="ecoswap-notification-content">
-      <img src="${chrome.runtime.getURL('icons/icon48.png')}" alt="EcoSwap" />
+    <div class="ecoswap-notification-content" style="display: flex; align-items: center; gap: 10px;">
+      <img src="${chrome.runtime.getURL('icons/icon48.png')}" alt="EcoSwap" style="width: 32px; height: 32px;" />
       <p>Found ${count} eco-friendly alternatives!</p>
       <button id="ecoswap-view-btn">View</button>
     </div>
