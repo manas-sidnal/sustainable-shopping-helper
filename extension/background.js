@@ -3,6 +3,12 @@ import { storeAlternatives, getStoredAlternatives } from './utils.js';
 
 // Listen for messages from the content script
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+
+  if(request.type === 'OPEN_POPUP') {
+    chrome.action.openPopup();
+    sendResponse({ status: 'opened'})
+  }
+
   if (request.action === 'scanProduct') {
     const productInfo = request.productInfo;
     

@@ -3,14 +3,33 @@
   "name": "EcoSwap - Eco-Friendly Product Alternatives",
   "version": "1.0.0",
   "description": "Discover eco-friendly alternatives to products while shopping online",
-  
   "action": {
     "default_popup": "popup.html",
-    "default_title": "EcoSwap"
+    "default_title": "EcoSwap",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
   },
   "permissions": [
     "storage",
     "activeTab"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "icons/icon48.png"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
   ],
   "host_permissions": [
     "*://*.amazon.com/*",
@@ -30,7 +49,9 @@
         "*://*.target.com/*",
         "*://*.ebay.com/*"
       ],
-      "js": ["contentScript.js"],
+      "js": [
+        "contentScript.js"
+      ],
       "run_at": "document_end"
     }
   ]

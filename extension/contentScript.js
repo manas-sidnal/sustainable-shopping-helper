@@ -187,9 +187,16 @@ const showNotification = (count) => {
     <div class="ecoswap-notification-content">
       <img src="${chrome.runtime.getURL('icons/icon48.png')}" alt="EcoSwap" />
       <p>Found ${count} eco-friendly alternatives!</p>
-      <button>View</button>
+      <button id="ecoswap-view-btn">View</button>
     </div>
   `;
+  document.body.appendChild(notification);
+
+  // Handle view button click
+  document.getElementById('ecoswap-view-btn').addEventListener('click', () => {
+    chrome.runtime.sendMessage({type: 'OPEN_POPUP' });
+  });
+
   
   // Add styles
   const style = document.createElement('style');
