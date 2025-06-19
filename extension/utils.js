@@ -4,32 +4,39 @@
 export async function loadAlternativesData() {
   try {
     const response = await fetch(chrome.runtime.getURL('alternatives.json'));
+
+    // --- ADDED: Check if the HTTP response was successful ---
+    if (!response.ok) {
+      throw new Error(`Failed to load alternatives data: HTTP error! Status: ${response.status} for URL: ${response.url}`);
+    }
+
     const data = await response.json();
     return data;
   } catch (error) {
     console.error('Error loading alternatives data:', error);
-    return [];
+    // --- CHANGED: Re-throw the error to propagate it upstream ---
+    throw error; // Propagate the error so calling functions know about the failure
   }
 }
 
 // Store alternatives in local storage for a product
 export async function storeAlternatives(productId, alternatives) {
   if (!productId) return;
-  
+
   try {
     // Get existing stored alternatives
     const storedData = await chrome.storage.local.get('productAlternatives');
     const productAlternatives = storedData.productAlternatives || {};
-    
+
     // Add/update alternatives for this product
     productAlternatives[productId] = {
       alternatives,
       timestamp: Date.now()
     };
-    
+
     // Store in local storage
     await chrome.storage.local.set({ productAlternatives });
-    
+
     // Clear old data (older than 7 days)
     clearOldProductData();
   } catch (error) {
@@ -40,15 +47,15 @@ export async function storeAlternatives(productId, alternatives) {
 // Get stored alternatives for a product
 export async function getStoredAlternatives(productId) {
   if (!productId) return null;
-  
+
   try {
     const storedData = await chrome.storage.local.get('productAlternatives');
     const productAlternatives = storedData.productAlternatives || {};
-    
+
     if (productAlternatives[productId]) {
       return productAlternatives[productId].alternatives;
     }
-    
+
     return null;
   } catch (error) {
     console.error('Error getting stored alternatives:', error);
@@ -62,21 +69,21 @@ export async function saveAlternative(alternative) {
     // Get existing saved alternatives
     const storedData = await chrome.storage.local.get('savedAlternatives');
     const savedAlternatives = storedData.savedAlternatives || [];
-    
+
     // Check if already saved
     const index = savedAlternatives.findIndex(alt => alt.id === alternative.id);
-    
+
     if (index === -1) {
       // Add to saved list
       savedAlternatives.push({
         ...alternative,
         savedAt: Date.now()
       });
-      
+
       // Store in local storage
       await chrome.storage.local.set({ savedAlternatives });
     }
-    
+
     return true;
   } catch (error) {
     console.error('Error saving alternative:', error);
@@ -101,13 +108,13 @@ export async function removeSavedAlternative(alternativeId) {
     // Get existing saved alternatives
     const storedData = await chrome.storage.local.get('savedAlternatives');
     let savedAlternatives = storedData.savedAlternatives || [];
-    
+
     // Filter out the one to remove
     savedAlternatives = savedAlternatives.filter(alt => alt.id !== alternativeId);
-    
+
     // Store updated list
     await chrome.storage.local.set({ savedAlternatives });
-    
+
     return true;
   } catch (error) {
     console.error('Error removing saved alternative:', error);
@@ -120,10 +127,10 @@ async function clearOldProductData() {
   try {
     const storedData = await chrome.storage.local.get('productAlternatives');
     const productAlternatives = storedData.productAlternatives || {};
-    
+
     const sevenDaysAgo = Date.now() - (7 * 24 * 60 * 60 * 1000);
     let hasChanges = false;
-    
+
     // Check each product entry
     for (const productId in productAlternatives) {
       if (productAlternatives[productId].timestamp < sevenDaysAgo) {
@@ -131,7 +138,7 @@ async function clearOldProductData() {
         hasChanges = true;
       }
     }
-    
+
     // Store updated data if changes were made
     if (hasChanges) {
       await chrome.storage.local.set({ productAlternatives });
@@ -142,28 +149,76 @@ async function clearOldProductData() {
 }
 
 // Format price string to a consistent format
+// Format price string to a consistent format with currency detection
 export function formatPrice(priceString) {
-  if (!priceString) return '';
-  
-  // Remove any non-numeric characters except for the decimal point
-  const numericPrice = priceString.replace(/[^0-9.]/g, '');
-  
-  // Parse the price as a float
-  const price = parseFloat(numericPrice);
-  
-  // Format the price with 2 decimal places and add the dollar sign
-  return `$${price.toFixed(2)}`;
+    if (!priceString || typeof priceString !== 'string') {
+        return 'Price not available';
+    }
+
+    let currencySymbol = '';
+    let cleanedPriceString = priceString; // Use a working copy
+
+    // 1. Detect and extract currency symbol
+    if (cleanedPriceString.includes('₹')) {
+        currencySymbol = '₹';
+        cleanedPriceString = cleanedPriceString.replace('₹', '').trim();
+    } else if (cleanedPriceString.includes('€')) {
+        currencySymbol = '€';
+        cleanedPriceString = cleanedPriceString.replace('€', '').trim();
+    } else if (cleanedPriceString.includes('£')) {
+        currencySymbol = '£';
+        cleanedPriceString = cleanedPriceString.replace('£', '').trim();
+    } else if (cleanedPriceString.includes('$')) {
+        currencySymbol = '$';
+        cleanedPriceString = cleanedPriceString.replace('$', '').trim();
+    } else {
+        // Default to '$' if no known symbol is detected
+        currencySymbol = '$';
+    }
+
+    // 2. Handle price ranges
+    if (cleanedPriceString.includes('-') || cleanedPriceString.includes('~')) {
+        const parts = cleanedPriceString.split(/[-~]/).map(part => part.trim());
+        const formattedParts = [];
+
+        for (const part of parts) {
+            const numericValue = parseFloat(part.replace(/[^0-9.]/g, ''));
+            if (!isNaN(numericValue)) {
+                formattedParts.push(numericValue.toLocaleString('en-IN', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                }));
+            } else {
+                formattedParts.push(part); // Keep original if not a valid number
+            }
+        }
+        // Reconstruct the range with symbols on each part
+        return formattedParts.map(p => `${currencySymbol}${p}`).join(' - ');
+    }
+
+    // 3. Handle single prices
+    const numericPrice = parseFloat(cleanedPriceString.replace(/[^0-9.]/g, ''));
+    if (isNaN(numericPrice)) {
+        return priceString === '~' ? 'Price not available' : 'Invalid price'; // Handle '~' specifically
+    }
+
+    let formatted = numericPrice.toLocaleString('en-IN', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+
+    return `${currencySymbol}${formatted}`;
 }
 
 // Calculate how eco-friendly a product is (simplified version)
 export function calculateEcoScore(product) {
   let score = 5; // Base score
-  
+
   // Add points for eco-friendly features
   if (product.ecoFeatures) {
     score += product.ecoFeatures.length * 0.5;
   }
-  
+
   // Cap at 10
   return Math.min(score, 10);
 }

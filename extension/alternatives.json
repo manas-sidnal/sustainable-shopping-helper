@@ -1,7 +1,7 @@
 [
   {
     "id": "eco1001",
-    "name": "Biodegradable Wheat Straw Phone Case",
+    "name": "Biodegradable Wheat Straw iPhone Case",
     "brand": "Brown Living",
     "description": "Made from wheat straw, this phone case is 100% compostable at end-of-life. Durable and lightweight.",
     "imageUrl": "https://brownliving.in/cdn/shop/products/mandala-edition-biodegradable-eco-friendly-wheat-straw-phone-case-mobile-cover-177-13814-mndl-13-001-tech-accessories-brown-living-397095.jpg?v=1682964271&width=900",
@@ -14,16 +14,16 @@
   },
 {
     "id": "eco1002",
-    "name": "EcoBuds True Wireless Earbuds",
+    "name": "Skullcandy EcoBuds - True Wireless Earbuds",
     "brand": "Skullcandy",
     "description": "Designed with a focus on reducing carbon footprint by 50% and features a battery-free charging dock.",
-    "imageUrl": "[Image URL]",
-    "price": "~",
+    "imageUrl": "https://m.media-amazon.com/images/I/61+l558ysoL._AC_SX466_.jpg",
+    "price": "₹2600 - ₹3700",
     "ecoScore": 7.0,
     "ecoFeatures": ["Reduced carbon footprint", "Battery-free charging dock (less heavy metals)", "Recycled materials in components."],
     "replaces": ["conventional earbuds", "wireless headphones", "audio devices"],
     "keywords": ["Earbuds", "headphones", "sustainable tech", "low carbon", "wireless audio"],
-    "purchaseUrl": "[Purchase URL]"
+    "purchaseUrl": "https://a.co/d/jgvQ6x6"
   },
 {
     "id": "eco1003",
@@ -40,55 +40,55 @@
   },
 {
     "id": "eco1004",
-    "name": "Recycled Tyre Sneakers",
+    "name": "Greensole Sneakers",
     "brand": "Greensole",
-    "description": "Unique sneakers crafted from upcycled tyre soles and other sustainable fabrics, significantly reducing landfill waste.",
-    "imageUrl": "[Image URL]",
-    "price": "₹1999",
+    "description": "GreenSole offers a range of eco-friendly footwear for men and women, including sneakers, sandals, and flip-flops, all designed for comfort and style using breathable materials.",
+    "imageUrl": "https://www.greensole.com/cdn/shop/files/GREENSOLEG_SNATURE2.0_grande.jpg?v=1736099580",
+    "price": "₹2999 - ₹3499",
     "ecoScore": 8.0,
     "ecoFeatures": ["Upcycled materials (tyres)", "Waste reduction", "Sustainable fabrics", "Social impact"],
     "replaces": ["new material sneakers", "virgin plastic footwear", "casual shoes"],
     "keywords": ["Sneakers", "recycled shoes", "sustainable footwear", "upcycled", "casual shoes"],
-    "purchaseUrl": "[Purchase URL]"
+    "purchaseUrl": "https://www.greensole.com/collections/all?sort_by=price-ascending&filter.p.product_type=sneaker&filter.p.product_type=Sneaker&filter.v.price.gte=&filter.v.price.lte="
   },
 {
     "id": "eco1005",
-    "name": "Certified Organic Face Cleanser",
+    "name": "Hemp, Tea Tree and Neem Face Wash",
     "brand": "Juicy Chemistry",
-    "description": "ECOCERT COSMOS certified organic cleanser with natural ingredients, free from harsh chemicals, in recyclable packaging.",
-    "imageUrl": "[Image URL]",
-    "price": "₹650",
+    "description": "This organic purifying face wash is designed for oily and combination skin. It deep cleans, balances, and combats hormonal acne and breakouts, leaving your complexion fresh and clear with soothing botanical extracts.",
+    "imageUrl": "https://juicychemistry.com/cdn/shop/files/Hemp_Tea_Tree_and_Neem_Face_Wash_6_FrontImage.jpg?v=1750139055&width=600",
+    "price": "₹499 - ₹750",
     "ecoScore": 9.0,
     "ecoFeatures": ["ECOCERT COSMOS Certified", "Organic ingredients", "Chemical-free", "Cruelty-free", "Recyclable glass bottle"],
     "replaces": ["chemical face washes", "plastic bottle skincare", "daily cleansers"],
-    "keywords": ["Face wash", "organic skincare", "natural beauty", "chemical-free", "sustainable beauty"],
-    "purchaseUrl": "[Purchase URL]"
+    "keywords": ["Face wash", "organic skincare", "natural beauty", "chemical-free", "skincare"],
+    "purchaseUrl": "https://juicychemistry.com/products/acne-organic-face-wash-hemp-tea-tree-neem"
   },
 {
     "id": "eco1006",
     "name": "Zero-Waste Solid Shampoo Bar",
     "brand": "Earth Rhythm",
-    "description": "A plastic-free solid shampoo bar made with natural ingredients, ideal for travel and significantly reducing plastic waste.",
-    "imageUrl": "[Image URL]",
-    "price": "₹499",
+    "description": "Earth Rhythm's collection offers solid, eco-conscious shampoo bars formulated with natural ingredients to sustainably cleanse and nourish various hair types.",
+    "imageUrl": "https://earthrhythm.com/cdn/shop/files/Shampoo_Bar_With_Shikakai_Reeta_Amla_Curry_Leaf.jpg?v=1730101068&width=700",
+    "price": "₹499 - ₹799",
     "ecoScore": 10.0,
     "ecoFeatures": ["Plastic-free", "Zero waste", "Natural ingredients", "Chemical-free", "Compostable packaging"],
     "replaces": ["liquid shampoo", "plastic bottled haircare", "shampoo"],
     "keywords": ["Shampoo bar", "solid shampoo", "zero waste", "haircare", "plastic-free"],
-    "purchaseUrl": "[Purchase URL]"
+    "purchaseUrl": "https://earthrhythm.com/collections/shampoo-bar"
   },
 {
     "id": "eco1007",
     "name": "Neem Wood Comb",
     "brand": "Brown Living",
-    "description": "Handcrafted comb made from natural neem wood, which is antibacterial and static-free. A biodegradable alternative to plastic.",
-    "imageUrl": "[Image URL]",
-    "price": "₹199",
+    "description": "100% natural and biodegradable Neem wood comb designed to prevent dandruff, promote hair growth, and improve scalp circulation.",
+    "imageUrl": "https://brownliving.in/cdn/shop/products/neem-wood-comb-311-17950-nwsc-1-hair-comb-brown-living-606747.jpg?v=1682965378&width=600",
+    "price": "₹180 - ₹300",
     "ecoScore": 9.0,
     "ecoFeatures": ["Natural wood", "Biodegradable", "Antibacterial", "Sustainable resource", "Plastic-free"],
     "replaces": ["plastic combs", "hair brushes", "hair styling tools"],
-    "keywords": ["Comb", "wooden comb", "neem comb", "hair accessory", "plastic-free"],
-    "purchaseUrl": "[Purchase URL]"
+    "keywords": ["Comb", "plastic comb", "Synthetic comb", "hair accessory", "Shampoo comb"],
+    "purchaseUrl": "https://brownliving.in/products/neem-wood-comb-1?_pos=1&_psq=neem+wood+comb&_ss=e&_v=1.0&variant=41567801966767"
   },
 {
     "id": "eco1008",
@@ -105,29 +105,29 @@
   },
 {
     "id": "eco1009",
-    "name": "Bamboo Toothbrush (Pack of 4)",
+    "name": "Bamboo Toothbrush ",
     "brand": "Beco",
     "description": "Biodegradable bamboo toothbrushes with charcoal-infused bristles, a sustainable and compostable alternative to plastic.",
-    "imageUrl": "[Image URL]",
-    "price": "₹399",
+    "imageUrl": "https://www.letsbeco.com/cdn/shop/products/Toothbrush_listing_images-09_10077ba3-190f-468e-a880-2c2a1faaaa79_700x.jpg?v=1696333911",
+    "price": "₹90",
     "ecoScore": 9.0,
     "ecoFeatures": ["Biodegradable handle (bamboo)", "Plastic-free", "Compostable", "FSC-certified bamboo"],
     "replaces": ["plastic toothbrushes", "oral-care", "bathroom essentials"],
-    "keywords": ["Toothbrush", "bamboo", "biodegradable", "oral care", "plastic-free"],
-    "purchaseUrl": "[Purchase URL]"
+    "keywords": ["Toothbrush", "plastic toothbrush","oral care", "bathroom"],
+    "purchaseUrl": "https://www.letsbeco.com/products/bamboo-toothbrush?_pos=1&_psq=toothbruh&_ss=e&_v=1.0"
   },
 {
     "id": "eco1010",
     "name": "Organic Cotton Bedsheets",
     "brand": "Amala Earth",
-    "description": "100% GOTS certified organic cotton bed sheet set, naturally dyed, promoting healthier sleep and sustainable farming.",
-    "imageUrl": "[Image URL]",
-    "price": "₹2499",
+    "description": "Amala Earth offers a collection of comfortable and sustainable bedsheets crafted from natural and organic fabrics like cotton and linen, promoting eco-conscious living.",
+    "imageUrl": "",
+    "price": "₹1099 - ₹9500",
     "ecoScore": 9.0,
     "ecoFeatures": ["GOTS Certified Organic Cotton", "Natural dyes", "Sustainable farming", "Chemical-free", "Biodegradable"],
     "replaces": ["conventional bedsheets", "synthetic bedding", "home linen"],
-    "keywords": ["Bedsheets", "organic bedding", "cotton", "sustainable home", "home linen"],
-    "purchaseUrl": "[Purchase URL]"
+    "keywords": ["Bedsheets", "Synthetic bedsheets", "home linen"],
+    "purchaseUrl": "https://amala.earth/collections/bedsheets-bedcovers?type=Bedsheets"
   },
 {
     "id": "eco1011",
@@ -388,21 +388,7 @@
     "replaces": ["new glass tumblers", "plastic drinking cups", "drinkware"],
     "keywords": ["Glass tumblers", "upcycled glass", "recycled", "eco-friendly drinkware", "sustainable home"],
     "purchaseUrl": "[Purchase URL]"
-  },
-  {
-    "id": "eco1031",
-    "name": "Daletu Bamboo Toothbrush (4-Pack)",
-    "brand": "Daletu",
-    "description": "Biodegradable bamboo toothbrushes with soft, plant-based bristles and compostable handles.",
-    "imageUrl": "https://m.media-amazon.com/images/I/61H9T9POp2L._SX466_.jpg",
-    "price": "$9.99",
-    "ecoScore": 9.0,
-    "ecoFeatures": ["Biodegradable handle", "Soft bristles", "Plastic-free packaging"],
-    "replaces": ["toothbrush", "oral care"],
-    "keywords": ["toothbrush", "bamboo", "brush", "oral"],
-    "purchaseUrl": "https://www.amazon.com/Daletu-Toothbrush-Biodegradable-Soft/dp/B08P79HBLD"
-  },
-
+  },  
   {
     "id": "eco1032",
     "name": "Brita Stainless Steel Filtered Water Bottle - 20 oz",
@@ -413,7 +399,7 @@
     "ecoScore": 8.8,
     "ecoFeatures": ["Reduces single-use bottles", "Built-in filter", "Insulated", "Dishwasher safe"],
     "replaces": ["plastic bottle", "filtered water"],
-    "keywords": ["bottle", "filtered", "water", "reusable", "steel"],
+    "keywords": ["bottle", "filtered", "water", "reusable", "plastic bottle"],
     "purchaseUrl": "https://www.target.com/p/brita-20oz-premium-double-wall-stainless-steel-insulated-filtered-water-bottle/-/A-79524567"
   }
 ]

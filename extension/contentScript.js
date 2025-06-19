@@ -1,16 +1,11 @@
 // Import utilities (note: in a real extension, we'd handle imports differently for content scripts)
 // For this example, we'll assume these functions are defined in this file
 const { extractProductInfo, getProductId, getProductCategory } = (() => {
-  // Extract product info based on the current website
+  // Extract product info based on the current website (now only Amazon)
   const extractProductInfo = () => {
-    if (window.location.hostname.includes('amazon.com')) {
+    // MODIFIED: Check for any amazon domain (e.g., .com, .in, .co.uk, etc.)
+    if (window.location.hostname.includes('amazon.')) {
       return extractAmazonProductInfo();
-    } else if (window.location.hostname.includes('walmart.com')) {
-      return extractWalmartProductInfo();
-    } else if (window.location.hostname.includes('target.com')) {
-      return extractTargetProductInfo();
-    } else if (window.location.hostname.includes('ebay.com')) {
-      return extractEbayProductInfo(); 
     }
     return null;
   };
@@ -23,137 +18,49 @@ const { extractProductInfo, getProductId, getProductCategory } = (() => {
     const productId = getAmazonProductId();
     const category = getAmazonProductCategory();
 
+    // --- Extraction for product details/description text ---
+    const productDescriptionElement = document.getElementById('productDescription') || document.getElementById('feature-bullets');
+    const productDetailsText = productDescriptionElement ? productDescriptionElement.innerText.trim() : ''; // Use innerText for full text
+
     return {
       id: productId,
       title: productTitle,
       price: productPrice,
       imageUrl: productImageUrl,
       category: category,
+      detailsText: productDetailsText.toLowerCase(), // Store as lowercase for matching
       source: 'amazon'
     };
   };
 
-  // Extract product info from Walmart
-  const extractWalmartProductInfo = () => {
-    const productTitle = document.querySelector('[data-testid="product-title"]')?.textContent.trim();
-    const productPrice = document.querySelector('[data-testid="price-value"]')?.textContent.trim();
-    const productImageUrl = document.querySelector('[data-testid="hero-image"]')?.src;
-    const productId = getWalmartProductId();
-    const category = getWalmartProductCategory();
-
-    return {
-      id: productId,
-      title: productTitle,
-      price: productPrice,
-      imageUrl: productImageUrl,
-      category: category,
-      source: 'walmart'
-    };
-  };
-
-  // Extract product info from Target
-  const extractTargetProductInfo = () => {
-    const productTitle = document.querySelector('[data-test="product-title"]')?.textContent.trim();
-    const productPrice = document.querySelector('[data-test="product-price"]')?.textContent.trim();
-    const productImageUrl = document.querySelector('[data-test="product-image"]')?.src;
-    const productId = getTargetProductId();
-    const category = getTargetProductCategory();
-
-    return {
-      id: productId,
-      title: productTitle,
-      price: productPrice,
-      imageUrl: productImageUrl,
-      category: category,
-      source: 'target'
-    };
-  };
-
-  // Extract product info from eBay
-  const extractEbayProductInfo = () => {
-    const productTitle = document.querySelector('h1.x-item-title__mainTitle')?.textContent.trim();
-    const productPrice = document.querySelector('span[itemprop="price"]')?.textContent.trim();
-    const productImageUrl = document.querySelector('img#icImg')?.src;
-    const productId = getEbayProductId();
-    const category = getEbayProductCategory();
-
-    return {
-      id: productId,
-      title: productTitle,
-      price: productPrice,
-      imageUrl: productImageUrl,
-      category: category,
-      source: 'ebay'
-    };
-  };
-
-  // Get product ID based on URL or DOM elements
+  // Get product ID based on URL or DOM elements (now only Amazon)
   const getProductId = () => {
-    if (window.location.hostname.includes('amazon.com')) {
+    // MODIFIED: Check for any amazon domain
+    if (window.location.hostname.includes('amazon.')) {
       return getAmazonProductId();
-    } else if (window.location.hostname.includes('walmart.com')) {
-      return getWalmartProductId();
-    } else if (window.location.hostname.includes('target.com')) {
-      return getTargetProductId();
-    } else if (window.location.hostname.includes('ebay.com')) {
-      return getEbayProductId();
     }
     return null;
   };
 
+  // Get product category based on DOM elements (now only Amazon)
   const getProductCategory = () => {
-  if (window.location.hostname.includes('amazon.com')) {
-    return getAmazonProductCategory();
-  } else if (window.location.hostname.includes('walmart.com')) {
-    return getWalmartProductCategory();
-  } else if (window.location.hostname.includes('target.com')) {
-    return getTargetProductCategory();
-  } else if (window.location.hostname.includes('ebay.com')) {
-    return getEbayProductCategory();
-  }
-  return 'Unknown';
-};
+    // MODIFIED: Check for any amazon domain
+    if (window.location.hostname.includes('amazon.')) {
+      return getAmazonProductCategory();
+    }
+    return 'Unknown';
+  };
 
 
-  // Helper functions for extracting product IDs
+  // Helper function for extracting Amazon product ID
   const getAmazonProductId = () => {
     const match = window.location.pathname.match(/\/dp\/([A-Z0-9]+)/);
     return match ? match[1] : null;
   };
 
-  const getWalmartProductId = () => {
-    const match = window.location.pathname.match(/\/ip\/([0-9]+)/);
-    return match ? match[1] : null;
-  };
-
-  const getTargetProductId = () => {
-    const match = window.location.pathname.match(/\/p\/([A-Za-z0-9-]+)/);
-    return match ? match[1] : null;
-  };
-
-  const getEbayProductId = () => {
-    const match = window.location.pathname.match(/\/itm\/([0-9]+)/);
-    return match ? match[1] : null;
-  };
-
-  // Helper functions for extracting product categories
+  // Helper function for extracting Amazon product category
   const getAmazonProductCategory = () => {
     const breadcrumbs = document.querySelector('#wayfinding-breadcrumbs_feature_div');
-    return breadcrumbs ? breadcrumbs.textContent.trim().split('\n')[0].trim() : 'Unknown';
-  };
-
-  const getWalmartProductCategory = () => {
-    const breadcrumbs = document.querySelector('.breadcrumb');
-    return breadcrumbs ? breadcrumbs.textContent.trim().split('/')[0].trim() : 'Unknown';
-  };
-
-  const getTargetProductCategory = () => {
-    const breadcrumbs = document.querySelector('.breadcrumbs');
-    return breadcrumbs ? breadcrumbs.textContent.trim().split('/')[0].trim() : 'Unknown';
-  };
-
-  const getEbayProductCategory = () => {
-    const breadcrumbs = document.querySelector('.breadcrumbs');
     return breadcrumbs ? breadcrumbs.textContent.trim().split('\n')[0].trim() : 'Unknown';
   };
 
@@ -161,113 +68,42 @@ const { extractProductInfo, getProductId, getProductCategory } = (() => {
   return { extractProductInfo, getProductId, getProductCategory };
 })();
 
-// Detect when we're on a product page
+// Detect when we're on an Amazon product page
 const isProductPage = () => {
   const hostname = window.location.hostname;
   const pathname = window.location.pathname;
 
-  if (hostname.includes('amazon.com') && pathname.includes('/dp/')) {
-    return true;
-  } else if (hostname.includes('walmart.com') && pathname.includes('/ip/')) {
-    return true;
-  } else if (hostname.includes('target.com') && pathname.includes('/p/')) {
-    return true;
-  } else if (hostname.includes('ebay.com') && pathname.includes('/itm/')) {
+  // MODIFIED: Check for any amazon domain and the product page path
+  if (hostname.includes('amazon.') && pathname.includes('/dp/')) {
     return true;
   }
-
   return false;
 };
 
-// Create notification when alternatives are found
-const showNotification = (count) => {
+// Function to display a general message to the user
+const showUserMessage = (message, type = 'info') => {
+  const existingNotification = document.querySelector('.ecoswap-notification');
+  if (existingNotification) {
+      existingNotification.remove(); // Remove any previous notification/message
+  }
+
   const notification = document.createElement('div');
-  notification.className = 'ecoswap-notification';
+  notification.className = `ecoswap-notification ecoswap-${type}`; // Add type class for styling
   notification.innerHTML = `
-    <div class="ecoswap-notification-content" style="display: flex; align-items: center; gap: 10px;">
+    <div class="ecoswap-notification-content">
       <img src="${chrome.runtime.getURL('icons/icon48.png')}" alt="EcoSwap" style="width: 32px; height: 32px;" />
-      <p>Found ${count} eco-friendly alternatives!</p>
-      <button id="ecoswap-view-btn">View</button>
+      <p>${message}</p>
+      <button id="ecoswap-close-btn" class="ecoswap-close-button">&times;</button>
     </div>
   `;
   document.body.appendChild(notification);
 
-  // Handle view button click
-  document.getElementById('ecoswap-view-btn').addEventListener('click', () => {
-    chrome.runtime.sendMessage({type: 'OPEN_POPUP' });
+  // Handle close button click
+  document.getElementById('ecoswap-close-btn').addEventListener('click', () => {
+    notification.style.animation = 'ecoswap-slide-out 0.3s ease-in forwards';
+    setTimeout(() => notification.remove(), 300);
   });
 
-  
-  // Add styles
-  const style = document.createElement('style');
-  style.textContent = `
-    .ecoswap-notification {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 10000;
-      background-color: #F5F5DC;
-      border: 1px solid #4CAF50;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      padding: 15px;
-      font-family: 'Open Sans', sans-serif;
-      animation: ecoswap-slide-in 0.3s ease-out;
-    }
-    
-    .ecoswap-notification-content {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    
-    .ecoswap-notification img {
-      width: 24px;
-      height: 24px;
-    }
-    
-    .ecoswap-notification p {
-      margin: 0;
-      color: #333;
-    }
-    
-    .ecoswap-notification button {
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      padding: 5px 10px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background-color 0.2s;
-    }
-    
-    .ecoswap-notification button:hover {
-      background-color: #3E8E41;
-    }
-    
-    @keyframes ecoswap-slide-in {
-      from {
-        transform: translateX(100%);
-        opacity: 0;
-      }
-      to {
-        transform: translateX(0);
-        opacity: 1;
-      }
-    }
-  `;
-  document.head.appendChild(style);
-  
-  // Add to the page
-  document.body.appendChild(notification);
-  
-  // Handle click on view button
-  notification.querySelector('button').addEventListener('click', () => {
-    chrome.runtime.sendMessage({ action: 'openPopup' });
-    notification.remove();
-  });
-  
   // Remove after 10 seconds
   setTimeout(() => {
     if (notification.parentNode) {
@@ -277,26 +113,86 @@ const showNotification = (count) => {
   }, 10000);
 };
 
+
+// Create notification when alternatives are found
+const showNotification = (count) => {
+  const existingNotification = document.querySelector('.ecoswap-notification');
+  if (existingNotification) {
+      existingNotification.remove(); // Remove any previous message
+  }
+
+  const notification = document.createElement('div');
+  notification.className = 'ecoswap-notification ecoswap-success'; // Add a success class for specific styling
+  notification.innerHTML = `
+    <div class="ecoswap-notification-content">
+      <img src="${chrome.runtime.getURL('icons/icon48.png')}" alt="EcoSwap" style="width: 32px; height: 32px;" />
+      <p>Found ${count} eco-friendly alternatives!</p>
+      <button id="ecoswap-view-btn" class="ecoswap-action-button">View</button>
+      <button id="ecoswap-close-btn" class="ecoswap-close-button">&times;</button>
+    </div>
+  `;
+  document.body.appendChild(notification);
+
+
+  // Handle view button click
+  document.getElementById('ecoswap-view-btn').addEventListener('click', () => {
+    chrome.runtime.sendMessage({type: 'OPEN_POPUP' });
+    notification.style.animation = 'ecoswap-slide-out 0.3s ease-in forwards';
+    setTimeout(() => notification.remove(), 300); // Remove after view button click
+  });
+
+  // Handle close button click
+  document.getElementById('ecoswap-close-btn').addEventListener('click', () => {
+    notification.style.animation = 'ecoswap-slide-out 0.3s ease-in forwards';
+    setTimeout(() => notification.remove(), 300);
+  });
+
+  // Remove after 10 seconds
+  setTimeout(() => {
+    if (notification.parentNode) {
+      notification.style.animation = 'ecoswap-slide-out 0.3s ease-in forwards';
+      setTimeout(() => notification.remove(), 300);
+    }
+  }, 10000);
+};
+
+
 // Main execution
 const init = () => {
   // Check if we're on a product page
   if (!isProductPage()) {
     return;
   }
-  
+
   // Wait for the page to fully load
   setTimeout(() => {
     // Extract product information
     const productInfo = extractProductInfo();
-    
+
     if (productInfo && productInfo.id) {
       // Send the product info to the background script
       chrome.runtime.sendMessage(
         { action: 'scanProduct', productInfo },
         (response) => {
-          if (response && response.success && response.alternatives.length > 0) {
-            // Show notification with the number of alternatives found
-            showNotification(response.alternatives.length);
+          if (chrome.runtime.lastError) {
+            // This handles potential errors in message sending itself or if receiver not found
+            console.error("Error sending message or no response:", chrome.runtime.lastError);
+            showUserMessage("Oops! Something went wrong while scanning. Please try again.", 'error');
+            return;
+          }
+
+          if (response && response.success) {
+            if (response.alternatives.length > 0) {
+              // Case 1: Alternatives found
+              showNotification(response.alternatives.length);
+            } else {
+              // Case 2: No alternatives found
+              showUserMessage("No eco-friendly alternatives found for this product.", 'info');
+            }
+          } else {
+            // Case 3: Error occurred (response.success is false)
+            console.error('Failed to get alternatives:', response.error);
+            showUserMessage("Could not find alternatives. Please try again later.", 'error');
           }
         }
       );
@@ -313,7 +209,108 @@ chrome.runtime.onMessage.addListener((request, _, sendResponse) => {
     const productInfo = extractProductInfo();
     sendResponse({ success: true, productInfo });
   }
-  
+
   // Return true to indicate that the response will be sent asynchronously
   return true;
 });
+
+// --- STYLES FOR NOTIFICATIONS ---
+const styleElement = document.createElement('style');
+styleElement.textContent = `
+  .ecoswap-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10000;
+    background-color: #F5F5DC; /* Default/Success */
+    border: 1px solid #4CAF50; /* Default/Success */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    font-family: 'Open Sans', sans-serif;
+    animation: ecoswap-slide-in 0.3s ease-out;
+    min-width: 280px; /* Ensure it's wide enough for messages */
+    color: #333; /* Default text color */
+  }
+
+  .ecoswap-notification-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+  }
+
+  .ecoswap-notification img {
+    width: 32px; /* Increased slightly for better visibility */
+    height: 32px;
+  }
+
+  .ecoswap-notification p {
+    margin: 0;
+    color: inherit; /* Inherit color from notification type */
+    flex-grow: 1;
+    font-size: 0.95em; /* Slightly adjusted font size */
+  }
+
+  .ecoswap-action-button { /* Style for 'View' button */
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+    white-space: nowrap; /* Prevent text wrapping */
+  }
+
+  .ecoswap-action-button:hover {
+    background-color: #3E8E41;
+  }
+
+  .ecoswap-close-button { /* Style for the close (x) button */
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    line-height: 1;
+    padding: 0 5px;
+    margin-left: 10px;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .ecoswap-close-button:hover {
+    color: #333;
+  }
+
+  /* Specific styles for different notification types */
+  .ecoswap-notification.ecoswap-success {
+    background-color: #E6FFE6; /* Light green */
+    border-color: #4CAF50; /* Green */
+    color: #336633; /* Dark green text */
+  }
+
+  .ecoswap-notification.ecoswap-info {
+    background-color: #E0F7FA; /* Light blue */
+    border-color: #00BCD4; /* Cyan */
+    color: #006064; /* Dark cyan text */
+  }
+
+  .ecoswap-notification.ecoswap-error {
+    background-color: #FFEBEE; /* Light red */
+    border-color: #F44336; /* Red */
+    color: #B71C1C; /* Dark red text */
+  }
+
+  @keyframes ecoswap-slide-in {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+
+  @keyframes ecoswap-slide-out {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(100%); opacity: 0; }
+  }
+`;
+document.head.appendChild(styleElement);

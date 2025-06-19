@@ -1,0 +1,13 @@
+{
+    "id": "<product-id>",
+    "name": "<product-name>",
+    "brand": "<brand-name\>",
+    "description": "<description>",
+    "imageUrl": "<imageUrl>",
+    "price": "<price>",
+    "ecoScore": <ecoScore(1.0-10.0)>,
+    "ecoFeatures": ["<ecoFeature1>", "<ecoFeature2>", ...],
+    "replaces": ["<non-sustainable product type 1>", "<non-sustainable product type 2>", ...],
+    "keywords": ["<keyword1>", "<keyword2>", ...],
+    "purchaseUrl": "<purchaseUrl>"
+  }
